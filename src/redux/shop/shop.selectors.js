@@ -18,11 +18,11 @@ export const selectCollections = createSelector(
 // convert collection to array
 export const selectCollectionsForPreview = createSelector(
   [selectCollections],
-  collections => Object.keys(collections).map(key => collections[key])
+  collections => collections ? Object.keys(collections).map(key => collections[key]) : []
 )
 
 export const selectCollection = collectionUrlParam =>
 createSelector(
   [selectCollections],
-  collections => collections[collectionUrlParam] //collections.find(collection => collection.id === COLLECTION_ID_MAP[collectionUrlParam])  
+  collections => collections ? collections[collectionUrlParam] : null //collections.find(collection => collection.id === COLLECTION_ID_MAP[collectionUrlParam])  
 );
